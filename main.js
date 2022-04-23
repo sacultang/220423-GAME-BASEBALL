@@ -14,21 +14,25 @@ function createNum() {
 // console.log(randomNum)
 function checkType() {
 	const answer = inputValue.value
-	console.log(answer)
+	// console.log(answer)
+	let answerArr = answer.split('').map((e) => {
+		return parseInt(e)
+	})
+	let set = new Set(answerArr)
+	// let setArr = [...set]
+	console.log(set)
+	// console.log(answerArr)
 	if (randomNum.length === 0) createNum()
 	if (answer.trim().length !== 4) {
 		alert('4자리수를 입력해주세요')
 	} else if (isNaN(answer)) {
 		// value가 숫자인지 확인
 		alert('숫자를 입력해주세요')
-	} // else if(){
-	// 	alert('다른 숫자를 입력해주세요')
-	// }
+	} else if ([...set].length < 4) {
+		alert('다른 숫자를 입력해주세요')
+	}
 	// value를 숫자로 변환
 	else {
-		let answerArr = answer.split('').map((e) => {
-			return parseInt(e)
-		})
 		// console.log(answerArr)
 		checkGame(answerArr)
 		inputValue.value = ''
@@ -47,13 +51,13 @@ function checkGame(check) {
 		let divEl = document.createElement('div')
 		divEl.className = 'number'
 		if (check[i] === randomNum[i]) {
-			console.log('good')
+			// console.log('good')
 			divEl.classList.add('good')
 			divEl.innerText = `${check[i]}`
 			wrapNum.append(divEl)
 			correct++
 		} else if (randomNum.includes(check[i])) {
-			console.log('bade')
+			// console.log('bade')
 			divEl.classList.add('notbad')
 			divEl.innerText = `${check[i]}`
 			wrapNum.append(divEl)
