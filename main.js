@@ -55,21 +55,26 @@ function checkGame(check) {
 	correctEl.prepend(wrapNum)
 	for (let i = 0; i < check.length; i++) {
 		let divEl = document.createElement('div')
+		let spanEl = document.createElement('span')
+		spanEl.className = 'text-num'
 		divEl.className = 'number'
 		if (check[i] === randomNum[i]) {
 			// console.log('good')
 			divEl.classList.add('good')
-			divEl.innerText = `${check[i]}`
+			spanEl.innerText = `${check[i]}`
+			divEl.append(spanEl)
 			wrapNum.append(divEl)
 			correct++
 		} else if (randomNum.includes(check[i])) {
 			// console.log('bade')
 			divEl.classList.add('notbad')
-			divEl.innerText = `${check[i]}`
+			spanEl.innerText = `${check[i]}`
+			divEl.append(spanEl)
 			wrapNum.append(divEl)
 		} else {
 			divEl.classList.add('bad')
-			divEl.innerText = `${check[i]}`
+			spanEl.innerText = `${check[i]}`
+			divEl.append(spanEl)
 			wrapNum.append(divEl)
 		}
 	}

@@ -5,6 +5,29 @@ html {
 li {
 	list-style: none;
 }
+/* 인풋 */
+.form-wrap {
+	display: flex;
+	flex-direction: column;
+	width: 200px;
+}
+.form-wrap .input-value {
+	height: 40px;
+	outline: none;
+	border: 1px solid #7d7d7d;
+	margin-bottom: 10px;
+}
+.form-wrap .input-value:focus {
+	background-color: #e8f1f1;
+}
+.form-wrap .submit {
+	border: none;
+	border-radius: 8px;
+	height: 40px;
+	background-color: #7d7d7d;
+	color: #fff;
+	font-size: 2rem;
+}
 .container {
 	width: 800px;
 	margin: auto;
@@ -15,6 +38,7 @@ li {
 .correct {
 	padding: 40px;
 	margin: auto;
+	position: relative;
 }
 
 /* 숫자 부분 */
@@ -30,29 +54,79 @@ li {
 .correct .wrap-number {
 	display: flex;
 	animation: fadein 0.4s ease-in-out;
+	background-color: #e8e8e8;
+	margin: 10px 0;
+	padding: 20px;
+	border-radius: 8px;
+	border: 1px dashed #ccc;
 }
 .correct .number {
-	width: 60px;
-	height: 60px;
-	background-color: #ccc;
+	width: 80px;
+	height: 80px;
 	margin: 5px;
 	flex-shrink: 0;
 	display: flex;
-	color: white;
-	justify-content: center;
+	flex-direction: column;
 	align-items: center;
-	font-size: 1.8rem;
+	font-size: 2rem;
+	border-radius: 4px;
 }
+/* .correct .number::before {
+	content: '';
+	background-color: white;
+	width: 20%;
+	height: 100%;
+	left: 0;
+} */
 .correct .number.good {
-	background-color: green;
+	border: 1px solid green;
+	background-color: rgba(0, 128, 0, 0.142);
+}
+.correct .number.good::before {
+	background-color: #008000;
+	content: 'Strike';
+	font-size: 1.4rem;
+	color: #e1ffe1;
+	line-height: 2.3rem;
+	text-align: center;
+	width: 100%;
+	height: 30%;
 }
 .correct .number.notbad {
-	background-color: yellow;
-	color: blue;
+	border: 1px solid #dbb700;
+	background-color: #dbb70021;
+}
+.correct .number.notbad::before {
+	background-color: #dbb700;
+	content: 'Ball';
+	font-size: 1.4rem;
+	color: #fff8d6;
+	line-height: 2.3rem;
+	text-align: center;
+	width: 100%;
+	height: 30%;
 }
 .correct .number.bad {
-	background-color: rgb(74, 74, 74);
+	border: 1px solid #4a4a4a;
+	background-color: #4a4a4a27;
 }
+.correct .number.bad::before {
+	background-color: #4a4a4a;
+	content: 'Out';
+	font-size: 1.4rem;
+	color: #e7e7e7;
+	line-height: 2.3rem;
+	text-align: center;
+	width: 100%;
+	height: 30%;
+}
+.correct .number .text-num {
+	display: flex;
+	align-items: center;
+	flex-grow: 1;
+}
+
+/* 팝업  */
 .popup {
 	display: none;
 }
@@ -77,7 +151,6 @@ li {
 .popup .reset-icon:hover {
 	transform: scale(1.1);
 }
-
 .hidden {
 	display: none;
 }
