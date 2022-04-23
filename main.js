@@ -76,20 +76,26 @@ function checkGame(check) {
 
 	if (correct !== 4) {
 		failCheck -= 1
+		console.log(failCheck)
 	}
-
-	// console.log(failCheck)
 	if (correct === 4) {
+		formEl.classList.add('hidden')
 		popupEl.classList.add('popup-color')
 		popupTextEl.textContent = '정답'
 	} else if (failCheck === 0) {
+		formEl.classList.add('hidden')
 		popupEl.classList.add('popup-color')
 		popupTextEl.textContent = '실패'
 	}
 }
 function resetGame() {
+	popupEl.classList.remove('popup-color')
+	formEl.classList.remove('hidden')
+	inputValue.value = ''
+	inputValue.focus()
 	correctEl.innerHTML = ''
 	randomNum = []
+	failCheck = 9
 }
 // console.log(randomNum)
 formEl.addEventListener('submit', (e) => {
@@ -98,6 +104,5 @@ formEl.addEventListener('submit', (e) => {
 })
 resetBtn.addEventListener('click', (e) => {
 	e.preventDefault()
-	popupEl.classList.remove('popup-color')
 	resetGame()
 })

@@ -18,8 +18,18 @@ li {
 }
 
 /* 숫자 부분 */
+@keyframes fadein {
+	0% {
+		opacity: 0.4;
+		transform: translate3d(0, 100%, 0);
+	}
+	100% {
+		opacity: 1;
+	}
+}
 .correct .wrap-number {
 	display: flex;
+	animation: fadein 0.4s ease-in-out;
 }
 .correct .number {
 	width: 60px;
@@ -61,4 +71,13 @@ li {
 }
 .popup .reset-icon {
 	font-size: 4rem;
+	cursor: pointer;
+	transition: all 0.3s ease-in;
+}
+.popup .reset-icon:hover {
+	transform: scale(1.1);
+}
+
+.hidden {
+	display: none;
 }
