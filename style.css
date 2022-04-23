@@ -1,3 +1,7 @@
+html {
+	font-size: 62.5%;
+	line-height: 1.285;
+}
 li {
 	list-style: none;
 }
@@ -12,6 +16,8 @@ li {
 	padding: 40px;
 	margin: auto;
 }
+
+/* 숫자 부분 */
 .correct .wrap-number {
 	display: flex;
 }
@@ -25,6 +31,7 @@ li {
 	color: white;
 	justify-content: center;
 	align-items: center;
+	font-size: 1.8rem;
 }
 .correct .number.good {
 	background-color: green;
@@ -35,4 +42,23 @@ li {
 }
 .correct .number.bad {
 	background-color: rgb(74, 74, 74);
+}
+.popup {
+	display: none;
+}
+.popup-color {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 40px 100px;
+	background-color: #eaeaea;
+	border-radius: 8px;
+	margin-top: 40px;
+}
+.popup .popup-text {
+	font-size: 3rem;
+	margin-bottom: 20px;
+}
+.popup .reset-icon {
+	font-size: 4rem;
 }

@@ -1,7 +1,10 @@
 const formEl = document.querySelector('form')
 const inputValue = document.querySelector('.input-value')
 const btn = document.querySelector('.submit')
-const randomNum = []
+const resetBtn = document.querySelector('.reset-icon')
+let randomNum = []
+let failCheck = 9
+
 function createNum() {
 	while (randomNum.length < 4) {
 		let num = Math.floor(Math.random() * 9 + 1)
@@ -11,7 +14,7 @@ function createNum() {
 	}
 }
 // createNum()
-// console.log(randomNum)
+
 function checkType() {
 	const answer = inputValue.value
 	// console.log(answer)
@@ -20,7 +23,7 @@ function checkType() {
 	})
 	let set = new Set(answerArr)
 	// let setArr = [...set]
-	console.log(set)
+	// console.log(set)
 	// console.log(answerArr)
 	if (randomNum.length === 0) createNum()
 	if (answer.trim().length !== 4) {
@@ -34,6 +37,7 @@ function checkType() {
 	// value를 숫자로 변환
 	else {
 		// console.log(answerArr)
+
 		checkGame(answerArr)
 		inputValue.value = ''
 		inputValue.focus()
@@ -41,6 +45,8 @@ function checkType() {
 }
 
 let correctEl = document.querySelector('.correct')
+const popupEl = document.querySelector('.popup')
+const popupTextEl = document.querySelector('.popup-text')
 
 function checkGame(check) {
 	let correct = 0
@@ -67,9 +73,31 @@ function checkGame(check) {
 			wrapNum.append(divEl)
 		}
 	}
+
+	if (correct !== 4) {
+		failCheck -= 1
+	}
+
+	// console.log(failCheck)
+	if (correct === 4) {
+		popupEl.classList.add('popup-color')
+		popupTextEl.textContent = '정답'
+	} else if (failCheck === 0) {
+		popupEl.classList.add('popup-color')
+		popupTextEl.textContent = '실패'
+	}
+}
+function resetGame() {
+	correctEl.innerHTML = ''
+	randomNum = []
 }
 // console.log(randomNum)
 formEl.addEventListener('submit', (e) => {
 	e.preventDefault()
 	checkType()
+})
+resetBtn.addEventListener('click', (e) => {
+	e.preventDefault()
+	popupEl.classList.remove('popup-color')
+	resetGame()
 })
