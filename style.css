@@ -1,0 +1,38 @@
+li {
+	list-style: none;
+}
+.container {
+	width: 800px;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.correct {
+	padding: 40px;
+	margin: auto;
+}
+.correct .wrap-number {
+	display: flex;
+}
+.correct .number {
+	width: 60px;
+	height: 60px;
+	background-color: #ccc;
+	margin: 5px;
+	flex-shrink: 0;
+	display: flex;
+	color: white;
+	justify-content: center;
+	align-items: center;
+}
+.correct .number.good {
+	background-color: green;
+}
+.correct .number.notbad {
+	background-color: yellow;
+	color: blue;
+}
+.correct .number.bad {
+	background-color: rgb(74, 74, 74);
+}
