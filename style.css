@@ -5,7 +5,23 @@ html {
 li {
 	list-style: none;
 }
+
+/* container */
+.container {
+	margin: auto;
+	display: flex;
+	position: relative;
+	padding: 30px;
+}
 /* 인풋 */
+.form-group {
+	width: 50%;
+	height: 600px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
 .form-wrap {
 	display: flex;
 	flex-direction: column;
@@ -28,24 +44,30 @@ li {
 	color: #fff;
 	font-size: 2rem;
 }
-.container {
+.form-group .count-text {
+	margin-top: 40px;
+	font-size: 2rem;
+}
+
+/* 넘버그룹 */
+.number-group {
+	border-radius: 20px;
+	background-color: #d0c1d1;
 	width: 800px;
-	margin: auto;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	min-height: 800px;
+	height: fit-content;
 }
 .correct {
 	padding: 40px;
 	margin: auto;
-	position: relative;
+	width: fit-content;
 }
 
 /* 숫자 부분 */
 @keyframes fadein {
 	0% {
 		opacity: 0.4;
-		transform: translate3d(0, 100%, 0);
+		transform: translate3d(100%, 0, 0);
 	}
 	100% {
 		opacity: 1;
@@ -128,19 +150,29 @@ li {
 
 /* 팝업  */
 .popup {
-	display: none;
-}
-.popup-color {
+	width: 400px;
+	height: 400px;
+	position: fixed;
+	border: 2px solid #ccc;
+	background-color: #fff;
+	border-radius: 8px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 40px 100px;
-	background-color: #eaeaea;
-	border-radius: 8px;
-	margin-top: 40px;
+	justify-content: center;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1), 0 0 0 1000px rgba(255, 255, 255, 0.7);
+	visibility: hidden;
+}
+.popup.active {
+	visibility: visible;
 }
 .popup .popup-text {
-	font-size: 3rem;
+	font-size: 5rem;
 	margin-bottom: 20px;
 }
 .popup .reset-icon {

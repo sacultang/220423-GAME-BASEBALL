@@ -47,9 +47,11 @@ function checkType() {
 let correctEl = document.querySelector('.correct')
 const popupEl = document.querySelector('.popup')
 const popupTextEl = document.querySelector('.popup-text')
+const strikeText = document.querySelector('.count-text')
 
 function checkGame(check) {
-	let correct = 0
+	let strike = 0
+	let ball = 0
 	let wrapNum = document.createElement('div')
 	wrapNum.className = 'wrap-number'
 	correctEl.prepend(wrapNum)
@@ -64,13 +66,16 @@ function checkGame(check) {
 			spanEl.innerText = `${check[i]}`
 			divEl.append(spanEl)
 			wrapNum.append(divEl)
-			correct++
+			strike++
+			strikeText.innerHTML = `${strike}스트라이크 ${ball}볼입니다`
 		} else if (randomNum.includes(check[i])) {
 			// console.log('bade')
 			divEl.classList.add('notbad')
 			spanEl.innerText = `${check[i]}`
 			divEl.append(spanEl)
 			wrapNum.append(divEl)
+			ball++
+			strikeText.innerHTML = `${strike}스트라이크 ${ball}볼입니다`
 		} else {
 			divEl.classList.add('bad')
 			spanEl.innerText = `${check[i]}`
@@ -79,28 +84,34 @@ function checkGame(check) {
 		}
 	}
 
-	if (correct !== 4) {
+	if (strike !== 4) {
 		failCheck -= 1
 		console.log(failCheck)
 	}
-	if (correct === 4) {
+	if (strike === 4) {
 		formEl.classList.add('hidden')
-		popupEl.classList.add('popup-color')
+		popupEl.classList.add('active')
 		popupTextEl.textContent = '정답'
+		strikeText.classList.add('hidden')
 	} else if (failCheck === 0) {
 		formEl.classList.add('hidden')
-		popupEl.classList.add('popup-color')
+		popupEl.classList.add('active')
 		popupTextEl.textContent = '실패'
+		strikeText.classList.add('hidden')
 	}
 }
+
+//  게임 초기화
 function resetGame() {
-	popupEl.classList.remove('popup-color')
+	popupEl.classList.remove('active')
 	formEl.classList.remove('hidden')
+	strikeText.classList.remove('hidden')
 	inputValue.value = ''
 	inputValue.focus()
 	correctEl.innerHTML = ''
 	randomNum = []
 	failCheck = 9
+	strikeText.innerHTML = `0스트라이크 0볼입니다`
 }
 // console.log(randomNum)
 formEl.addEventListener('submit', (e) => {
