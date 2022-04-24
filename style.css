@@ -6,7 +6,7 @@
 	--white: #fff;
 	--strike: #008000;
 	--ball: #dbb700;
-	--out: #082642;
+	--out: #79838c;
 }
 /* common */
 html {
@@ -222,9 +222,9 @@ li {
 /* 팝업  */
 .popup {
 	width: 400px;
-	height: 400px;
+	height: 300px;
 	position: fixed;
-	border: 2px solid #ccc;
+	border: 2px solid var(--main-blue);
 	background-color: var(--white);
 	border-radius: 8px;
 	display: flex;
@@ -247,13 +247,27 @@ li {
 	font-size: 5rem;
 	margin-bottom: 20px;
 }
+.popup .icon {
+	width: 100px;
+	height: 80px;
+	border-radius: 8px;
+	background-color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+	border: 1px solid var(--dark-blue);
+	box-sizing: border-box;
+}
 .popup .reset-icon {
 	font-size: 4rem;
-	cursor: pointer;
-	transition: all 0.3s ease-in;
 }
-.popup .reset-icon:hover {
-	transform: scale(1.1);
+.popup .icon:hover {
+	border: none;
+	background-color: var(--main-blue);
+	transform: scale(1.05);
+	color: #fff;
 }
 
 #my-canvas {
