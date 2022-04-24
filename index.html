@@ -15,18 +15,29 @@
   </head>
 
   <body>
+
     <div class="container">
+      <header class="header">
+        <span class="logo">BASEBALL GAME</span>
+      </header>
       <section class="form-group">
         <form class="form-wrap">
-          <input type="text" class="input-value">
-          <button class="submit">click</button>
+          <input type="text" class="input-value" placeholder="Enter">
+          <button class="submit submit-check">Check</button>
+          <button class="submit submit-retry">Retry</button>
         </form>
-        <span class="count-text">
-          <strong>0</strong>스트라이크
-          <strong>0</strong>볼입니다</span>
-        <span class="count-game">기회는 총 <strong>9</strong>번 남았습니다</span>
+        <div class="text-group">
+          <span class="count-text">
+            <p>Strike : <strong class="strike-text">0</strong></p>
+            <p>Ball : <strong class="ball-text">0</strong></p>
+          </span>
+          <span class="count-game">
+            Try : <strong class="fail-text">9</strong>
+          </span>
+        </div>
 
       </section>
+
       <section class="number-group">
         <div class="correct"></div>
       </section>

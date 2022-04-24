@@ -1,7 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+/* Color */
+:root {
+	--main-blue: #1e90ff;
+	--dark-blue: #135ca3;
+	--white: #fff;
+	--strike: #008000;
+	--ball: #dbb700;
+	--out: #082642;
+}
 /* common */
 html {
 	font-size: 62.5%;
 	line-height: 1.285;
+	font-family: 'Roboto', sans-serif;
+}
+body {
+	margin: 0;
+	padding: 0;
+	background: var(--main-blue);
+	height: 100vh;
 }
 li {
 	list-style: none;
@@ -9,66 +26,119 @@ li {
 .hidden {
 	visibility: hidden;
 }
+/* header */
+.header {
+	position: absolute;
+	left: 0;
+}
+.header .logo {
+	font-size: 2rem;
+	font-weight: 700;
+	color: var(--white);
+	letter-spacing: -0.1rem;
+}
 /* container */
 .container {
 	margin: auto;
 	display: flex;
 	position: relative;
-	padding: 30px;
+	padding: 80px 30px 30px 30px;
+	width: 1280px;
+	justify-content: space-evenly;
 }
 /* 인풋 */
 .form-group {
 	width: 50%;
-	height: 600px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+	height: inherit;
+	position: relative;
+	padding-top: 80px;
+	padding-right: 50px;
+	box-sizing: border-box;
 }
 .form-wrap {
-	display: flex;
-	flex-direction: column;
-	width: 200px;
+	position: relative;
+	z-index: 1;
 }
 .form-wrap .input-value {
+	width: 100%;
 	height: 40px;
 	outline: none;
-	border: 1px solid #7d7d7d;
+	border: 0;
+	border-bottom: 1px solid var(--white);
 	margin-bottom: 10px;
+	background-color: transparent;
+	color: var(--white);
+	transition: all 0.4s ease-in-out;
+	border-radius: 8px 8px 0 0;
 }
 .form-wrap .input-value:focus {
-	background-color: #e8f1f1;
+	outline: none;
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.form-wrap .input-value:focus::placeholder {
+	color: transparent;
+}
+.form-wrap .input-value::placeholder {
+	color: var(--white);
+	transition: all 0.4s ease-in-out;
 }
 .form-wrap .submit {
 	border: none;
 	border-radius: 8px;
 	height: 40px;
-	background-color: #7d7d7d;
-	color: #fff;
+	background-color: var(--white);
+	color: rgb(77, 77, 77);
 	font-size: 2rem;
+	transition: all 0.2s ease-in-out;
+	width: 200px;
+}
+.form-wrap .submit:hover {
+	background: #135ca3;
+	color: var(--white);
+}
+.form-wrap .submit-check {
+	position: absolute;
+	right: 205px;
+}
+.form-wrap .submit-retry {
+	position: absolute;
+	right: 0;
+}
+/* TEXT GROUP */
+.form-group .text-group {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	font-weight: 700;
+	color: var(--white);
 }
 .form-group .count-text {
 	margin-top: 40px;
-	font-size: 2rem;
+	font-size: 10rem;
+	line-height: 0;
 }
 .form-group .count-game {
 	margin-top: 40px;
-	font-size: 2rem;
+	font-size: 10rem;
 }
 
 /* 넘버그룹 */
 .number-group {
 	border-radius: 20px;
-	background-color: #d0c1d1;
-	width: 800px;
+	background-color: #135ca3;
+	min-width: 500px;
+	max-height: 800px;
 	min-height: 800px;
 	height: fit-content;
+	overflow-y: scroll;
+	scrollbar-width: none;
 }
 .correct {
 	padding: 40px;
 	margin: auto;
 	width: fit-content;
 	overflow: hidden;
+	box-sizing: border-box;
 }
 
 /* 숫자 부분 */
@@ -84,7 +154,7 @@ li {
 .correct .wrap-number {
 	display: flex;
 	animation: fadein 0.4s ease-in-out;
-	background-color: #e8e8e8;
+	background-color: var(--white);
 	margin: 10px 0;
 	padding: 20px;
 	border-radius: 8px;
@@ -102,11 +172,11 @@ li {
 	border-radius: 4px;
 }
 .correct .number.good {
-	border: 1px solid green;
+	border: 1px solid var(--strike);
 	background-color: rgba(0, 128, 0, 0.142);
 }
 .correct .number.good::before {
-	background-color: #008000;
+	background-color: var(--strike);
 	content: 'Strike';
 	font-size: 1.4rem;
 	color: #e1ffe1;
@@ -116,11 +186,11 @@ li {
 	height: 30%;
 }
 .correct .number.notbad {
-	border: 1px solid #dbb700;
+	border: 1px solid var(--ball);
 	background-color: #dbb70021;
 }
 .correct .number.notbad::before {
-	background-color: #dbb700;
+	background-color: var(--ball);
 	content: 'Ball';
 	font-size: 1.4rem;
 	color: #fff8d6;
@@ -130,11 +200,11 @@ li {
 	height: 30%;
 }
 .correct .number.bad {
-	border: 1px solid #4a4a4a;
+	border: 1px solid var(--out);
 	background-color: #4a4a4a27;
 }
 .correct .number.bad::before {
-	background-color: #4a4a4a;
+	background-color: var(--out);
 	content: 'Out';
 	font-size: 1.4rem;
 	color: #e7e7e7;
@@ -155,7 +225,7 @@ li {
 	height: 400px;
 	position: fixed;
 	border: 2px solid #ccc;
-	background-color: #fff;
+	background-color: var(--white);
 	border-radius: 8px;
 	display: flex;
 	flex-direction: column;

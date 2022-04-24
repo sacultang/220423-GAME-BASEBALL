@@ -1,6 +1,7 @@
 const formEl = document.querySelector('form')
 const inputValue = document.querySelector('.input-value')
-const btn = document.querySelector('.submit')
+const checkBtn = document.querySelector('.submit-check ')
+const retryBtn = document.querySelector('.submit-retry')
 const resetBtn = document.querySelector('.reset-icon')
 let randomNum = []
 let failCheck = 9
@@ -47,8 +48,10 @@ function checkType() {
 let correctEl = document.querySelector('.correct')
 const popupEl = document.querySelector('.popup')
 const popupTextEl = document.querySelector('.popup-text')
-const strikeText = document.querySelector('.count-text')
+const strikeText = document.querySelector('.strike-text')
+const ballText = document.querySelector('.ball-text')
 let confe = document.querySelector('#my-canvas')
+const failText = document.querySelector('.fail-text')
 
 function checkGame(check) {
 	let strike = 0
@@ -68,7 +71,7 @@ function checkGame(check) {
 			divEl.append(spanEl)
 			wrapNum.append(divEl)
 			strike++
-			strikeText.innerHTML = `<strong>${strike}</strong>스트라이크 <strong>${ball}</strong>볼입니다`
+			strikeText.textContent = `${strike}`
 		} else if (randomNum.includes(check[i])) {
 			// console.log('bade')
 			divEl.classList.add('notbad')
@@ -76,7 +79,7 @@ function checkGame(check) {
 			divEl.append(spanEl)
 			wrapNum.append(divEl)
 			ball++
-			strikeText.innerHTML = `<strong>${strike}</strong>스트라이크 <strong>${ball}</strong>볼입니다`
+			ballText.innerHTML = `${ball}`
 		} else {
 			divEl.classList.add('bad')
 			spanEl.innerText = `${check[i]}`
@@ -87,7 +90,8 @@ function checkGame(check) {
 
 	if (strike !== 4) {
 		failCheck -= 1
-		console.log(failCheck)
+		// console.log(failCheck)
+		failText.textContent = `${failCheck}`
 	}
 	if (strike === 4) {
 		// 나타나기
@@ -97,7 +101,6 @@ function checkGame(check) {
 
 		// 숨기기
 		formEl.classList.add('hidden')
-		strikeText.classList.add('hidden')
 	} else if (failCheck === 0) {
 		// 나타나기
 		popupEl.classList.add('active')
@@ -106,7 +109,6 @@ function checkGame(check) {
 
 		// 숨기기
 		formEl.classList.add('hidden')
-		strikeText.classList.add('hidden')
 	}
 }
 
@@ -121,14 +123,20 @@ function resetGame() {
 	correctEl.innerHTML = ''
 	randomNum = []
 	failCheck = 9
-	strikeText.innerHTML = `<strong>0</strong>스트라이크 <strong>0</strong>볼입니다`
+	strikeText.textContent = 0
+	ballText.textContent = 0
+	failText.textContent = failCheck
 }
 // console.log(randomNum)
-formEl.addEventListener('submit', (e) => {
+checkBtn.addEventListener('click', (e) => {
 	e.preventDefault()
 	checkType()
 })
 resetBtn.addEventListener('click', (e) => {
+	e.preventDefault()
+	resetGame()
+})
+retryBtn.addEventListener('click', (e) => {
 	e.preventDefault()
 	resetGame()
 })
