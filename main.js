@@ -15,25 +15,26 @@ function createNum() {
 	}
 }
 // createNum()
-
 function checkType() {
 	const answer = inputValue.value
-	// console.log(answer)
 	let answerArr = answer.split('').map((e) => {
 		return parseInt(e)
 	})
+	console.log(Number.isNaN(answerArr))
 	let set = new Set(answerArr)
 	// let setArr = [...set]
 	// console.log(set)
-	// console.log(answerArr)
+	// console.log(answerArr.indexOf(0))
 	if (randomNum.length === 0) createNum()
 	if (answer.trim().length !== 4) {
 		alert('4자리수를 입력해주세요')
-	} else if (isNaN(answer)) {
+	} else if (Number.isNaN(answerArr) || NaN) {
 		// value가 숫자인지 확인
 		alert('숫자를 입력해주세요')
 	} else if ([...set].length < 4) {
 		alert('다른 숫자를 입력해주세요')
+	} else if (answerArr.indexOf(0) > -1) {
+		alert('1~9까지 숫자를 입력해 주세요')
 	}
 	// value를 숫자로 변환
 	else {
